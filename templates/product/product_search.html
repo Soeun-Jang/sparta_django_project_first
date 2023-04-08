@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+상품 검색
+{% endblock %}
+
+{% block content %}
+
+<h1>상품 검색</h1><br>
+<h5>검색할 상품의 코드명을 입력해주세요.</h5>
+<form method="post">
+  {% csrf_token %}
+  <label for="search_code">검색할 코드:</label>
+  <input type="text" name="search_code" id="search_code">
+  <button type="submit" class="btn btn-primary">검색</button>
+</form>
+
+{% if products %}
+<h2>검색 결과</h2>
+<ul>
+  {% for product in products %}
+  <li>상품명 : {{ product.name }} </li>
+  <li>상품 코드 : ({{ product.code }})</li>
+  <li>카테고리 : {{ product.category }} </li>
+  <li>금액 : {{ product.price }}\</li>
+  <li>재고 : {{ product.stock }}개 </li>
+  <li>사이즈 : {{ product.size }}</li>
+  <li>상품 설명 : {{ product.description }} </li>
+  <li>작성자 : {{ product.author }}</li>
+  <li>등록 날짜 - {{product.created_at}} </li>
+  {% endfor %}
+</ul>
+{% else %}
+<br>
+<p>상품 코드가 존재하지 않습니다. 올바른 코드번호를 입력해주세요</p>
+{% endif %}
+
+{% endblock %}

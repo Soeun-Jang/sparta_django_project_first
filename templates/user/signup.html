@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+<!-- 템플릿 확장(상속)을 위한 코드. base.html파일을 상속받음 -->
+
+
+<!-- base.html에서 'title'블록을 상속받아 사용하는 코드 -->
+{% block title %}
+회원가입
+{% endblock %}
+<!-- base.html에서 'title'블록을 상속받아 사용하는 코드 -->
+
+<!-- base.html에서 'content'블록을 상속받아 사용하는 코드 -->
+{% block content %}
+<div class="container">
+  <div class="wrap">
+    <h2 class="title-center"> 회원가입 </h2>
+    <form class="form-area" method="post" action="/signup/">
+      {% csrf_token %}
+      <!-- CSRF보호를 위한 태그,POST요청 시 안전하게 보호-->
+      <div class="form-group mt-2 mb-2">
+        <label for="username">이름</label>
+        <input type="text" class="form-control" id="username" name="username">
+      </div>
+      <div class="form-group mt-2 mb-2">
+        <label for="password">비밀번호</label>
+        <input type="password" class="form-control" id="password" name="password">
+      </div>
+      <div class="form-group mt-2 mb-2">
+        <label for="password2">비밀번호 확인</label>
+        <input type="password" class="form-control" id="password2" name="password2">
+      </div>
+      <hr>
+      <div style="float: right">
+        <!--form태그의 method로 action에 데이터를 보내주는 역할-->
+        <button type="submit" class="btn btn-primary">회원가입</button>
+        <a href="/signin" class="btn btn-secondary">로그인 페이지로</a>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+<!-- base.html에서 'content'블록을 상속받아 사용하는 코드 -->

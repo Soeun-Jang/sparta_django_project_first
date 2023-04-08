@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+상품 등록
+{% endblock %}
+
+{% block content %}
+
+
+{% if error_message %}
+<ul class="message">
+  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ error_message }}</li>
+</ul>
+{% endif %}
+
+{% if error_message_code %}
+<ul class="message">
+  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ error_message_code }}</li>
+</ul>
+{% endif %}
+
+
+
+
+<h1>상품 등록</h1>
+<form method="post">
+  {% csrf_token %}
+  <label for="name">상품 이름:</label>
+  <input type="text" id="name" name="name"><br>
+
+  <label for="code">코드번호:</label>
+  <input type="text" id="code" name="code"><br>
+
+
+  <label for="price">상품 종류:</label>
+  <input type="text" id="category" name="category"><br>
+
+  <label for="price">상품 가격:</label>
+  <input type="number" id="price" name="price"><br>
+
+  <label for="product-size">Size:</label>
+  <select id="product-size" name="size">
+    <option value="S">Small</option>
+    <option value="M">Medium</option>
+    <option value="L">Large</option>
+    <option value="XL">XLarge</option>
+    <option value="F">Free</option>
+  </select>
+
+
+  <label for="description">상품 설명:</label>
+  <textarea id="description" name="mydescription"></textarea><br>
+  <!-- <input type="submit" value="등록하기"> -->
+  <button type="submit" class="btn btn-primary">등록</button>
+
+</form>
+
+{% endblock %}
