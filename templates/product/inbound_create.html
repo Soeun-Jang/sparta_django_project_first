@@ -8,13 +8,13 @@
   {% csrf_token %}
   <div class="form-group">
     <label for="product-id">코드번호</label>
-    <input type="text" class="form-control" id="product-id" name="code">
+    <input type="text" required class="form-control" id="product-id" name="code">
   </div>
   <div class="form-group">
     <label for="quantity">수량</label>
-    <input type="number" class="form-control" id="quantity" name="quantity">
+    <input type="number" required class="form-control" id="quantity" name="quantity">
   </div>
-  <button type="submit" class="btn btn-primary">등록</button>
+  <button type="submit" required class="btn btn-primary">등록</button>
 </form>
 {% for inbound in allinbound %}
 <div class="row">

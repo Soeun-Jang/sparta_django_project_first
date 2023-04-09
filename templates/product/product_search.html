@@ -15,6 +15,7 @@
   <button type="submit" class="btn btn-primary">검색</button>
 </form>
 
+{% if request.method == 'POST' %}
 {% if products %}
 <h2>검색 결과</h2>
 <ul>
@@ -33,6 +34,7 @@
 {% else %}
 <br>
 <p>상품 코드가 존재하지 않습니다. 올바른 코드번호를 입력해주세요</p>
+{% endif %}
 {% endif %}
 
 {% endblock %}
